@@ -40,6 +40,7 @@ class ExcelController extends Controller
                     $query->where('d_reg', $request->d_reg);
                 })
                 ->get();
+
             return View('informacion.info',compact('lista'))->with('success', "Filtro aplicado correctamente.");
         } catch (\Exception $e) {
             return Redirect()->back()->with('error',$e->getMessage());
