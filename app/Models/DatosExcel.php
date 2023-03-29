@@ -14,7 +14,7 @@ class DatosExcel extends Model
         'cliente', 'd_cliente', 'articulo','descripcion_articulo','area','causa','observacion',
         'ejercicio','fecha_pedido','numero_serie','numero_pedido','numero_pedido_cliente','cantidad_perdida',
         'importe_neto_lin','unidades_servidas','valor_servido','un_pendiente','valor_pendiente',
-        'status','gestor','tipo_bacorder','ped_atendido','fecha'];
+        'status','gestor','tipo_bacorder','ped_atendido','categoria','fecha'];
     public $timestamps = false;
 
 /*return new DatosExcel([

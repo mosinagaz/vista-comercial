@@ -31,22 +31,9 @@
                                 </div><!-- end card header -->
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form action="{{route('informacion')}}" method="post">
+                                        <form action="{{url('informacion')}}" method="get">
                                             @csrf
                                             <div class="row gy-4 mb-2">
-                                                <div class="col-xxl-4 col-md-6 col-sm-6">
-                                                    <div>
-                                                        <label for="basiInput" class="form-label">Usuario</label>
-                                                        <select name="gestor" type="text"
-                                                                class="form-control form-control-sm">
-                                                            <option value="">Seleccione un gestor</option>
-                                                            @foreach($usuarios as $usuario)
-                                                                <option
-                                                                    value="{{$usuario->gestor}}" {{(isset($lista) && !empty($lista[0]))?($lista[0]->gestor == $usuario->gestor ?'selected':''):'' }}>{{$usuario->gestor}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
                                                 <div class="col-xxl-4 col-md-6 col-sm-6">
                                                     <div>
                                                         <label for="basiInput" class="form-label">Catrgoría</label>
@@ -60,15 +47,6 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <!--end col-->
-                                                {{--<div class="col-xxl-4 col-md-6 col-sm-6">
-                                                    <div>
-                                                        <label for="labelInput" class="form-label">Regional</label>
-                                                        <input name="d_reg" type="text"
-                                                               class="form-control form-control-sm"
-                                                               id="labelInput">
-                                                    </div>
-                                                </div>--}}
                                             </div>
                                             <div class="col-xxl-3 col-md-6 mb-5">
                                                 <div>
@@ -79,7 +57,7 @@
                                             </div>
                                         </form>
                                         <div class="accordion" id="default-accordion-example">
-                                            @if(isset($lista) && !empty($lista[0]))
+                                            @if(isset($lista))
                                                 @foreach($lista as $dato)
                                                     <div class="accordion-item">
                                                         <h2 class="accordion-header" id="headingOne{{$dato->id}}">
@@ -113,12 +91,6 @@
                                                         </div>
                                                     </div>
                                                 @endforeach
-                                            @else
-                                                <!-- Primary Alert -->
-                                                <div class="alert alert-primary alert-border-left alert-dismissible fade show" role="alert">
-                                                    <i class="ri-user-smile-line me-3 align-middle"></i> <strong>Infoomación</strong> - no se encontraron datos para su búsqueda.
-                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                </div>
                                             @endif
                                             {{--<div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingThree">

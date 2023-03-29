@@ -25,3 +25,5 @@ Route::get('informacion',[ExcelController::class,'info'])->name('informacion');
 
 Route::post('importar',[ExcelController::class,'importar'])->name('importar');
 Route::post('informacion',[ExcelController::class,'filtrar'])->name('informacion');
+
+Route::get('informacion/gestor/{gestor}/{categoria?}',[ExcelController::class,'filtrarget']);

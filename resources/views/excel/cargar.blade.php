@@ -48,7 +48,7 @@
                                                             <code>xlsx , xls</code>.
                                                         </p>
                                                         <input class="form-control" type="file" id="formFile"
-                                                               name="archivo">
+                                                               name="archivo" required>
                                                     </div>
                                                 </div>
                                             </div>

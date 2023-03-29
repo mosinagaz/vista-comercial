@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('descripcion_articulo');
             $table->string('area');
             $table->string('causa');
-            $table->string('observacion');
+            $table->string('observacion')->nullable();
             $table->string('ejercicio');
             $table->date('fecha_pedido');
             $table->string('numero_serie');
@@ -41,6 +41,7 @@ return new class extends Migration
             $table->string('gestor');
             $table->string('tipo_bacorder');
             $table->string('ped_atendido');
+            $table->string('categoria');
             $table->date('fecha');
             //$table->timestamps();
         });

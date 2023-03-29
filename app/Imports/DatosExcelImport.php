@@ -6,12 +6,13 @@ use App\Models\DatosExcel;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 
 class DatosExcelImport implements ToModel, WithHeadingRow
 {
     public function model(array $row)
     {
-
+            //dd($row['observacion']);
         return new DatosExcel([
             'cod_wen' => $row['cod_uen'],
             'd_wen' => $row['d_uen'],
@@ -27,7 +28,7 @@ class DatosExcelImport implements ToModel, WithHeadingRow
             'causa' => $row['causa'],
             'observacion' => $row['observacion'],
             'ejercicio' => $row['ejercicio'],
-            'fecha_pedido' => Carbon::parse($row['fecha_pedido']),//Carbon::createFromFormat($row['fecha_pedido'])->format('Y-m-d'),
+            'fecha_pedido' => Carbon::instance(Date::excelToDateTimeObject($row['fecha_pedido'])),
             'numero_serie' => $row['numero_serie'],
             'numero_pedido' => $row['numero_pedido'],
             'numero_pedido_cliente' => $row['numero_pedido_cliente'],
@@ -41,6 +42,7 @@ class DatosExcelImport implements ToModel, WithHeadingRow
             'gestor' => $row['gestor'],
             'tipo_bacorder' => $row['tipo_backorder'],
             'ped_atendido' => $row['ped_atendido'],
+            'categoria' => $row['categoria'],
             'fecha' => Carbon::now('America/La_Paz'),
         ]);
 
