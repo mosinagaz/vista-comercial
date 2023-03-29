@@ -24,3 +24,4 @@ Route::get('cargar/excel',[ExcelController::class,'index'])->name('cargar');
 Route::get('informacion',[ExcelController::class,'info'])->name('informacion');
 
 Route::post('importar',[ExcelController::class,'importar'])->name('importar');
+Route::post('informacion',[ExcelController::class,'filtrar'])->name('informacion');

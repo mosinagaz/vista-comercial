@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('ejercicio');
             $table->date('fecha_pedido');
             $table->string('numero_serie');
-            $table->integer('numero');
+            $table->integer('numero_pedido');
             $table->string('numero_pedido_cliente');
             $table->float('cantidad_perdida');
             $table->float('importe_neto_lin');
@@ -42,7 +42,7 @@ return new class extends Migration
             $table->string('tipo_bacorder');
             $table->string('ped_atendido');
             $table->date('fecha');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

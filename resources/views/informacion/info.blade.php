@@ -7,6 +7,13 @@
                 </div>
             </div>
         </div>
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-top-border alert-dismissible fade show" role="alert">
+                <i class="ri-notification-off-line me-3 align-middle fs-16 text-success"></i><strong>Acción exitosa</strong>
+                - {{ $message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="row">
             <div class="col-lg-12">
                 <div class="d-flex flex-column h-100">
@@ -23,53 +30,102 @@
                                 </div><!-- end card header -->
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <div class="row gy-4 mb-2">
-                                            <div class="col-xxl-4 col-md-6">
-                                                <div>
-                                                    <label for="basiInput" class="form-label">Usuario</label>
-                                                    <input type="password" class="form-control" id="basiInput">
+                                        <form action="{{route('informacion')}}" method="post">
+                                            @csrf
+                                            <div class="row gy-4 mb-2">
+                                                <div class="col-xxl-4 col-md-6 col-sm-6">
+                                                    <div>
+                                                        <label for="basiInput" class="form-label">Usuario</label>
+                                                        <input name="gestor" type="text" class="form-control form-control-sm" required>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-xxl-4 col-md-6">
-                                                <div>
-                                                    <label for="labelInput" class="form-label">Numero de semana</label>
-                                                    <input type="password" class="form-control" id="labelInput">
+                                                <!--end col-->
+                                                <div class="col-xxl-4 col-md-6 col-sm-6">
+                                                    <div>
+                                                        <label for="labelInput" class="form-label">Regional</label>
+                                                        <input name="d_reg" type="text" class="form-control form-control-sm"
+                                                               id="labelInput">
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="col-xxl-4 col-md-6">
-                                                <div>
-                                                    <label for="labelInput" class="form-label">Otro filtro</label>
-                                                    <input type="password" class="form-control" id="labelInput">
+                                                <div class="col-xxl-4 col-md-6">
+                                                    <div>
+                                                        <label for="labelInput" class="form-label">Otro filtro</label>
+                                                        <input type="text" class="form-control form-control-sm">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xxl-3 col-md-6 mb-5">
-                                            <div>
-                                                <button type="button" class="btn btn-success  btn-label w-lg"><i class="ri-search-2-line label-icon align-middle fs-16 me-2"></i>Filtrar</button>
+                                            <div class="col-xxl-3 col-md-6 mb-5">
+                                                <div>
+                                                    <button type="submit" class="btn btn-success  btn-label w-lg"><i
+                                                            class="ri-search-2-line label-icon align-middle fs-16 me-2"></i>Filtrar
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                         <div class="accordion" id="default-accordion-example">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingOne">
-                                                    <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    <button class="accordion-button fw-semibold" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                            aria-expanded="true" aria-controls="collapseOne">
                                                         Data 1
                                                     </button>
                                                 </h2>
-                                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#default-accordion-example">
+                                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                                     aria-labelledby="headingOne"
+                                                     data-bs-parent="#default-accordion-example">
                                                     <div class="accordion-body">
-                                                        info1
+                                                        <div class="live-preview">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-bordered table-nowrap">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th scope="col">Id</th>
+                                                                        <th scope="col">Fecha Pedido</th>
+                                                                        <th scope="col">Pedido</th>
+                                                                        <th scope="col">Cliente</th>
+                                                                        <th scope="col">D Cliente</th>
+                                                                        <th scope="col">Artículo</th>
+                                                                        <th scope="col">D Artículo</th>
+                                                                        <th scope="col">U Pendiente</th>
+                                                                        <th scope="col">V Pendiente</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    @if(isset($lista))
+                                                                        @foreach($lista as $dato)
+                                                                            <tr>
+                                                                                <th scope="row">{{$loop->iteration}}</th>
+                                                                                <td>{{$dato->fecha_pedido}}</td>
+                                                                                <td>{{$dato->numero_pedido}}</td>
+                                                                                <td>{{$dato->cliente}}</td>
+                                                                                <td>{{$dato->d_cliente}}</td>
+                                                                                <td>{{$dato->articulo}}</td>
+                                                                                <td>{{$dato->descripcion_articulo}}</td>
+                                                                                <td>{{$dato->un_pendiente}}</td>
+                                                                                <td>{{$dato->valor_pendiente}}</td>
+                                                                            </tr>
+                                                                        @endforeach
+                                                                    @endif
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingTwo">
-                                                    <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    <button class="accordion-button fw-semibold collapsed" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                            aria-expanded="false" aria-controls="collapseTwo">
                                                         Data 2
                                                     </button>
                                                 </h2>
-                                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#default-accordion-example">
+                                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                                     aria-labelledby="headingTwo"
+                                                     data-bs-parent="#default-accordion-example">
                                                     <div class="accordion-body">
                                                         info 2
                                                     </div>
@@ -77,13 +133,17 @@
                                             </div>
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingThree">
-                                                    <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                    <button class="accordion-button fw-semibold collapsed" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                                            aria-expanded="false" aria-controls="collapseThree">
                                                         Data 3
                                                     </button>
                                                 </h2>
-                                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#default-accordion-example">
+                                                <div id="collapseThree" class="accordion-collapse collapse"
+                                                     aria-labelledby="headingThree"
+                                                     data-bs-parent="#default-accordion-example">
                                                     <div class="accordion-body">
-                                                      info 3
+                                                        info 3
                                                     </div>
                                                 </div>
                                             </div>
