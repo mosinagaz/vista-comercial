@@ -26,7 +26,6 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <form action="{{route('importar')}}" method="post" enctype="multipart/form-data">
-                                @method('post')
                                 @csrf
                                 <div class="card">
                                     <div class="card-header align-items-center d-flex">
