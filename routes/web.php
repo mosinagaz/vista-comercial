@@ -3,6 +3,7 @@
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 /*Route::get('/', function () {
     return view('welcome');
 });*/
-
+if (env('APP_ENV') === 'production') {
+    URL::forceSchema('https');
+}
 Route::get('/', function () {return view('auth.login');});
 Route::get('/login', function () {return view('auth.login');})->name('login');
 Route::get('home',[HomeController::class,'home']);
