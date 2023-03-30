@@ -15,7 +15,7 @@ class UsuarioSeeder extends Seeder
      */
     public function run(): void
     {
-        User::created([
+        User::create([
             'name'=>'Marcelo Osinaga Zabala',
             'email'=>'marcelo.osinaga@promedical.com.bo',
             'password' => Hash::make('149503*'),

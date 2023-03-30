@@ -181,11 +181,13 @@
                 </div>
                 <ul class="navbar-nav" id="navbar-nav">
                     <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                    @auth
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{route('cargar')}}"  role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                             <i class="bx bxs-dashboard"></i> <span data-key="t-dashboards">Cargar Datos</span>
                         </a>
                     </li> <!-- end Dashboard Menu -->
+                    @endauth
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{route('informacion')}}"  role="button" aria-expanded="false" aria-controls="sidebarApps">
                             <i class="bx bx-layer"></i> <span data-key="t-apps">Información</span>
