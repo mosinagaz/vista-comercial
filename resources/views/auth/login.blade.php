@@ -69,8 +69,7 @@
 
                                     <div class="mt-4">
                                         <form action="{{route('login')}}" method="post">
-                                            @csrf
-                                            @method('post')
+                                            {{ csrf_field() }}
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">Correo</label>
                                                 <input type="text" name="email" class="form-control" id="username" placeholder="Correo">
