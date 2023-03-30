@@ -8,9 +8,8 @@
     # Handle Authorization Header
     #RewriteCond %{HTTP:Authorization} .
     #RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-    RewriteCond %{HTTPS} off [OR]
-    RewriteCond %{HTTP_HOST} ^www\. [NC]
-    RewriteRule ^ https://dolphin-app-35r38.ondigitalocean.app%{REQUEST_URI} [L,NE,R=301]
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https:
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
