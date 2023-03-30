@@ -66,7 +66,6 @@
                                     <div>
                                         <h5 class="text-primary">Bienvenido!</h5>
                                     </div>
-
                                     <div class="mt-4">
                                         <form action="{{route('login')}}" method="post">
                                             {{ csrf_field() }}
