@@ -108,7 +108,7 @@
                                                                 <label for=""><strong>U Pendiente:</strong></label><br>
                                                                 {{$dato->un_pendiente}}<br>
                                                                 <label for=""><strong>V Pendiente:</strong></label><br>
-                                                                {{$dato->valor_pendiente}}
+                                                                {{$dato->valor_pendiente}} Bs
                                                             </div>
                                                         </div>
                                                     </div>
