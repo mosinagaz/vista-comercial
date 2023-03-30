@@ -57,6 +57,7 @@ class ExcelController extends Controller
     public function filtrarget(Request $request)
     {
         try {
+            $gestor = $request->gestor;
             $categoria = DatosExcel::select(['categoria'])->groupBy('categoria')->get();
             $lista = DatosExcel::where('ejercicio','2023')
                 ->when($request->gestor != null, function ($query) use ($request) {
@@ -70,7 +71,7 @@ class ExcelController extends Controller
                 })
                 ->get();
 
-            return View('informacion.info-get',compact('lista','categoria'))->with('success', "Filtro aplicado correctamente.");
+            return View('informacion.info-get',compact('lista','categoria','gestor'))->with('success', "Filtro aplicado correctamente.");
         } catch (\Exception $e) {
             return Redirect()->back()->with('error',$e->getMessage());
         }

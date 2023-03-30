@@ -31,13 +31,13 @@
                                 </div><!-- end card header -->
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form action="{{url('informacion/'.$lista[0]->gestor)}}" method="get">
+                                        <form action="{{url('informacion/gestor/'.$gestor)}}" method="get">
 
                                             <div class="row gy-4 mb-2">
                                                 <div class="col-xxl-4 col-md-12 col-sm-12">
                                                     <div>
                                                         <label for="basiInput" class="form-label">Catrgoría</label>
-                                                        <select name="/" type="text"
+                                                        <select name="categoria" type="text"
                                                                 class="form-control form-control-sm">
                                                             <option value="">Seleccione una categoria</option>
                                                             @foreach($categoria as $cat)

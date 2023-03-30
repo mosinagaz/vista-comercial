@@ -25,9 +25,9 @@ if (env('APP_ENV') === 'production') {
 Route::get('/', function () {return view('auth.login');});
 Route::get('/login', function () {return view('auth.login');})->name('login');
 Route::get('home',[HomeController::class,'home']);
-Route::get('informacion',[ExcelController::class,'info'])->name('informacion');
+Route::get('informacion/gestor/{gestor}',[ExcelController::class,'info'])->name('informacion');
 Route::post('informacion',[ExcelController::class,'filtrar'])->name('informacion');
-Route::get('informacion/gestor/{gestor}/{categoria?}',[ExcelController::class,'filtrarget']);
+Route::get('informacion/gestor/{gestor}',[ExcelController::class,'filtrarget']);
 
 Route::middleware('auth')->group(function () {
     Route::get('cargar/excel',[ExcelController::class,'index'])->name('cargar');
