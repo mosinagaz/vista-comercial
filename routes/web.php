@@ -19,9 +19,7 @@ use Illuminate\Support\Facades\URL;
 /*Route::get('/', function () {
     return view('welcome');
 });*/
-if (env('APP_ENV') === 'production') {
-    URL::forceSchema('https');
-}
+
 Route::get('/', function () {return view('auth.login');});
 Route::get('/login', function () {return view('auth.login');})->name('login');
 Route::get('home',[HomeController::class,'home']);
