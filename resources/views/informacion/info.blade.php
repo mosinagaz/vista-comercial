@@ -38,12 +38,14 @@
                                                     <div>
                                                         <label for="basiInput" class="form-label">Usuario</label>
                                                         <select name="gestor" type="text"
-                                                                class="form-control form-control-sm">
+                                                                class="form-control form-control-sm" required>
                                                             <option value="">Seleccione un gestor</option>
                                                             @foreach($usuarios as $usuario)
+
                                                                 <option
-                                                                    value="{{$usuario->gestor}}" {{(isset($lista) && !empty($lista[0]))?($lista[0]->gestor == $usuario->gestor ?'selected':''):'' }}>{{$usuario->gestor}}</option>
+                                                                    value="{{$usuario->gestor}}" {{(isset($lista) && !empty($lista))?(reset($lista)[0]['gestor'] == $usuario->gestor ?'selected':''):'' }}>{{$usuario->gestor}}</option>
                                                             @endforeach
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -55,21 +57,13 @@
                                                             <option value="">Seleccione una categoria</option>
                                                             @foreach($categoria as $cat)
                                                                 <option
-                                                                    value="{{$cat->categoria}}" {{(isset($lista) && !empty($lista[0])) ?($lista[0]->categoria == $cat->categoria ?'selected':''):'' }}>{{$cat->categoria}}</option>
+                                                                    value="{{$cat->categoria}}" {{(isset($lista) && !empty($lista)) ?(reset($lista)[0]['categoria'] == $cat->categoria ?'selected':''):'' }}>{{$cat->categoria}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <!--end col-->
-                                                {{--<div class="col-xxl-4 col-md-6 col-sm-6">
-                                                    <div>
-                                                        <label for="labelInput" class="form-label">Regional</label>
-                                                        <input name="d_reg" type="text"
-                                                               class="form-control form-control-sm"
-                                                               id="labelInput">
-                                                    </div>
-                                                </div>--}}
                                             </div>
+                                            {{--{{dd(reset($lista)[0]['categoria'])}}--}}
                                             <div class="col-xxl-3 col-md-6 mb-5">
                                                 <div>
                                                     <button type="submit" class="btn btn-success  btn-label w-lg"><i
@@ -79,45 +73,53 @@
                                             </div>
                                         </form>
                                         <div class="accordion" id="default-accordion-example">
-                                            @if(isset($lista) && !empty($lista[0]))
+                                            @if(isset($lista) && !empty($lista))
                                                 @foreach($lista as $dato)
+                                                    {{--{{dd($dato[0]['numero_pedido'])}}--}}
                                                     <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="headingOne{{$dato->id}}">
+                                                        <h2 class="accordion-header"
+                                                            id="headingOne{{$dato[0]['numero_pedido']}}">
                                                             <button class="accordion-button fw-semibold" type="button"
                                                                     data-bs-toggle="collapse"
-                                                                    data-bs-target="#collapseOne{{$dato->id}}"
+                                                                    data-bs-target="#collapseOne{{$dato[0]['numero_pedido']}}"
                                                                     aria-expanded="false"
-                                                                    aria-controls="collapseOne{{$dato->id}}">
-                                                                {{$dato->fecha_pedido}} - {{ $dato->d_cliente}} - {{$dato->descripcion_articulo}}
+                                                                    aria-controls="collapseOne{{$dato[0]['numero_pedido']}}">
+                                                                Pedido Nro. {{$dato[0]['numero_pedido']}}
+                                                                - {{$dato[0]['fecha_pedido']}}
+                                                                - {{ $dato[0]['d_cliente']}}
+                                                                - {{ $dato[0]['cliente']}}
+
                                                             </button>
                                                         </h2>
-                                                        <div id="collapseOne{{$dato->id}}"
+                                                        <div id="collapseOne{{$dato[0]['numero_pedido']}}"
                                                              class="accordion-collapse collapse"
-                                                             aria-labelledby="headingOne{{$dato->id}}"
+                                                             aria-labelledby="headingOne{{$dato[0]['numero_pedido']}}"
                                                              data-bs-parent="#default-accordion-example">
                                                             <div class="accordion-body">
-                                                                <label for=""><strong>DCliente:</strong></label><br>
-                                                                {{$dato->d_cliente}}<br>
-                                                                <label for=""><strong>Número
-                                                                        pedido:</strong></label><br>
-                                                                {{$dato->numero_pedido}}<br>
-                                                                <label for=""><strong>Artículo:</strong></label><br>
-                                                                {{$dato->articulo}}<br>
-                                                                <label for=""><strong>D Artículo:</strong></label><br>
-                                                                {{$dato->descripcion_articulo}}<br>
-                                                                <label for=""><strong>U Pendiente:</strong></label><br>
-                                                                {{$dato->un_pendiente}}<br>
-                                                                <label for=""><strong>V Pendiente:</strong></label><br>
-                                                                {{$dato->valor_pendiente}} Bs
+                                                                @foreach($dato as $info)
+                                                                    <div
+                                                                        class="alert alert-success alert-dismissible alert-outline fade show"
+                                                                        role="alert">
+                                                                        <strong>Cod Artículo:</strong> - {{$info['articulo']}}
+                                                                        <br>
+                                                                        <strong>Artículo:</strong> - {{$info['descripcion_articulo']}}
+                                                                        <br>
+                                                                        <strong>U. P:</strong> - {{$info['un_pendiente']}} - <strong>V. P:</strong> - {{$info['valor_pendiente']}} Bs.
+                                                                    </div>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     </div>
                                                 @endforeach
                                             @else
                                                 <!-- Primary Alert -->
-                                                <div class="alert alert-primary alert-border-left alert-dismissible fade show" role="alert">
-                                                    <i class="ri-user-smile-line me-3 align-middle"></i> <strong>Infoomación</strong> - no se encontraron datos para su búsqueda.
-                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                <div
+                                                    class="alert alert-primary alert-border-left alert-dismissible fade show"
+                                                    role="alert">
+                                                    <i class="ri-user-smile-line me-3 align-middle"></i> <strong>Infoomación</strong>
+                                                    - no se encontraron datos para su búsqueda.
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                            aria-label="Close"></button>
                                                 </div>
                                             @endif
                                             {{--<div class="accordion-item">
@@ -153,6 +155,72 @@
         </div>
     </div>
 @endsection
+
+
+
+
+
+{{--<div class="accordion" id="default-accordion-example">
+    @if(isset($lista) && !empty($lista[0]))
+        @foreach($lista as $dato)
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne{{$dato->id}}">
+                    <button class="accordion-button fw-semibold" type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne{{$dato->id}}"
+                            aria-expanded="false"
+                            aria-controls="collapseOne{{$dato->id}}">
+                        {{$dato->fecha_pedido}} - {{ $dato->d_cliente}} - {{$dato->descripcion_articulo}}
+                    </button>
+                </h2>
+                <div id="collapseOne{{$dato->id}}"
+                     class="accordion-collapse collapse"
+                     aria-labelledby="headingOne{{$dato->id}}"
+                     data-bs-parent="#default-accordion-example">
+                    <div class="accordion-body">
+                        <label for=""><strong>DCliente:</strong></label><br>
+                        {{$dato->d_cliente}}<br>
+                        <label for=""><strong>Número
+                                pedido:</strong></label><br>
+                        {{$dato->numero_pedido}}<br>
+                        <label for=""><strong>Artículo:</strong></label><br>
+                        {{$dato->articulo}}<br>
+                        <label for=""><strong>D Artículo:</strong></label><br>
+                        {{$dato->descripcion_articulo}}<br>
+                        <label for=""><strong>U Pendiente:</strong></label><br>
+                        {{$dato->un_pendiente}}<br>
+                        <label for=""><strong>V Pendiente:</strong></label><br>
+                        {{$dato->valor_pendiente}} Bs
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    @else
+        <!-- Primary Alert -->
+        <div class="alert alert-primary alert-border-left alert-dismissible fade show" role="alert">
+            <i class="ri-user-smile-line me-3 align-middle"></i> <strong>Infoomación</strong> - no se encontraron datos para su búsqueda.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    --}}{{--<div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button fw-semibold collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                    aria-expanded="false" aria-controls="collapseThree">
+                Data 3
+            </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse"
+             aria-labelledby="headingThree"
+             data-bs-parent="#default-accordion-example">
+            <div class="accordion-body">
+                info 3
+            </div>
+        </div>
+    </div>--}}{{--
+</div>--}}
+
+
 {{--<div class="live-preview">
     <div class="table-responsive">
         <table class="table table-bordered table-nowrap">

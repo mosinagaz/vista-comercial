@@ -19,7 +19,7 @@ class ExcelController extends Controller
     {
         $usuarios = DatosExcel::select(['gestor'])->groupBy('gestor')->get();
         $categoria = DatosExcel::select(['categoria'])->groupBy('categoria')->get();
-        return view('informacion.info',compact('usuarios','categoria'));
+        return view('informacion.info', compact('usuarios', 'categoria'));
     }
 
     public function importar(Request $request)
@@ -28,15 +28,16 @@ class ExcelController extends Controller
             Excel::import(new DatosExcelImport, $request->file('archivo'));
             return Redirect()->back()->with('success', "Datos cargados satisfactoriamente.");
         } catch (\Exception $e) {
-            return Redirect()->back()->with('error',$e->getMessage());
+            return Redirect()->back()->with('error', $e->getMessage());
         }
     }
+
     public function filtrar(Request $request)
     {
         try {
             $usuarios = DatosExcel::select(['gestor'])->groupBy('gestor')->get();
             $categoria = DatosExcel::select(['categoria'])->groupBy('categoria')->get();
-            $lista = DatosExcel::where('ejercicio','2023')
+            $datos = DatosExcel::where('ejercicio', '2023')
                 ->when($request->gestor != null, function ($query) use ($request) {
                     $query->where('gestor', $request->gestor);
                 })
@@ -46,11 +47,20 @@ class ExcelController extends Controller
                 ->when($request->categoria != null, function ($query) use ($request) {
                     $query->where('categoria', $request->categoria);
                 })
-                ->get();
+                ->get()->toArray();
+
+            $lista = array_reduce($datos, function ($result, $item) {
+                if (!isset($result[$item['numero_pedido']])) {
+                    $result[$item['numero_pedido']] = [];
+                }
+                $result[$item['numero_pedido']][] = $item;
+                return $result;
+            }, []);
+
             //dd($lista);
-            return View('informacion.info',compact('lista','usuarios','categoria'))->with('success', "Filtro aplicado correctamente.");
+            return View('informacion.info', compact('lista', 'usuarios', 'categoria'))->with('success', "Filtro aplicado correctamente.");
         } catch (\Exception $e) {
-            return Redirect()->back()->with('error',$e->getMessage());
+            return Redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -59,7 +69,7 @@ class ExcelController extends Controller
         try {
             $gestor = $request->gestor;
             $categoria = DatosExcel::select(['categoria'])->groupBy('categoria')->get();
-            $lista = DatosExcel::where('ejercicio','2023')
+            $datos = DatosExcel::where('ejercicio', '2023')
                 ->when($request->gestor != null, function ($query) use ($request) {
                     $query->where('gestor', $request->gestor);
                 })
@@ -69,11 +79,17 @@ class ExcelController extends Controller
                 ->when($request->categoria != null, function ($query) use ($request) {
                     $query->where('categoria', $request->categoria);
                 })
-                ->get();
-
-            return View('informacion.info-get',compact('lista','categoria','gestor'))->with('success', "Filtro aplicado correctamente.");
+                ->get()->toArray();
+            $lista = array_reduce($datos, function ($result, $item) {
+                if (!isset($result[$item['numero_pedido']])) {
+                    $result[$item['numero_pedido']] = [];
+                }
+                $result[$item['numero_pedido']][] = $item;
+                return $result;
+            }, []);
+            return View('informacion.info-get', compact('lista', 'categoria', 'gestor'))->with('success', "Filtro aplicado correctamente.");
         } catch (\Exception $e) {
-            return Redirect()->back()->with('error',$e->getMessage());
+            return Redirect()->back()->with('error', $e->getMessage());
         }
     }
 }
