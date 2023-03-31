@@ -116,8 +116,8 @@
                                                 <div
                                                     class="alert alert-primary alert-border-left alert-dismissible fade show"
                                                     role="alert">
-                                                    <i class="ri-user-smile-line me-3 align-middle"></i> <strong>Infoomación</strong>
-                                                    - no se encontraron datos para su búsqueda.
+                                                    <i class="ri-user-smile-line me-3 align-middle"></i> <strong>Información</strong>
+                                                    - no se encontraron datos.
                                                     <button type="button" class="btn-close" data-bs-dismiss="alert"
                                                             aria-label="Close"></button>
                                                 </div>
