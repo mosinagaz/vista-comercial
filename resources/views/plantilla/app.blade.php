@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
 
     <!-- plugin css -->
-    <link href="{{asset('assets/libs/jsvectormap/css/jsvectormap.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/libs/jsvectormap/css/jsvectormap.min.css')}}" rel="stylesheet" type="text/css"/>
 
     <!-- Layout config Js -->
     <script src="{{asset('assets/js/layout.js')}}"></script>

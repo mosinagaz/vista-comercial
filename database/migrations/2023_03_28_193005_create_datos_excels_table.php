@@ -23,9 +23,9 @@ return new class extends Migration
             $table->string('d_cliente');
             $table->string('articulo');
             $table->string('descripcion_articulo');
-            $table->string('area');
-            $table->string('causa');
-            $table->string('observacion')->nullable();
+            $table->string('area')->default('');
+            $table->string('causa')->default('');
+            $table->string('observacion')->default('');
             $table->string('ejercicio');
             $table->date('fecha_pedido');
             $table->string('numero_serie');
