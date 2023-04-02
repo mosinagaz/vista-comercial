@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('descripcion_articulo');
             $table->string('area')->default('');
             $table->string('causa')->default('');
-            $table->string('observacion')->default('Sin observación');
+            $table->string('observacion')->nullable();
             $table->string('ejercicio');
             $table->date('fecha_pedido');
             $table->string('numero_serie');
