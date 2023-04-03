@@ -88,7 +88,13 @@
                                                                         <br>
                                                                         <strong>Artículo:</strong> - {{$info['descripcion_articulo']}}
                                                                         <br>
+                                                                        <strong>Valor pedido:</strong>  {{$info['cantidad_perdida']}}
+                                                                        <br>
                                                                         <strong>U. P:</strong> - {{$info['un_pendiente']}} - <strong>V. P:</strong> - {{$info['valor_pendiente']}} Bs.
+                                                                        @if($categoriaSe === "DRECUP12")
+                                                                        <br>
+                                                                        <strong>Vida útil:</strong>  {{$info['observacion']}}
+                                                                        @endif
                                                                     </div>
                                                                 @endforeach
                                                             </div>

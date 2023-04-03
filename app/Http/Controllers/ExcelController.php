@@ -68,6 +68,7 @@ class ExcelController extends Controller
     {
         try {
             $gestor = $request->gestor;
+            $categoriaSe = $request->categoria;
             $categoria = DatosExcel::select(['categoria'])->groupBy('categoria')->get();
             $datos = DatosExcel::where('ejercicio', '2023')
                 ->when($request->gestor != null, function ($query) use ($request) {
@@ -87,7 +88,7 @@ class ExcelController extends Controller
                 $result[$item['numero_pedido']][] = $item;
                 return $result;
             }, []);
-            return View('informacion.info-get', compact('lista', 'categoria', 'gestor'))->with('success', "Filtro aplicado correctamente.");
+            return View('informacion.info-get', compact('lista', 'categoria','categoriaSe', 'gestor'))->with('success', "Filtro aplicado correctamente.");
         } catch (\Exception $e) {
             return Redirect()->back()->with('error', $e->getMessage());
         }
