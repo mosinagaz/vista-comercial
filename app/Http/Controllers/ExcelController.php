@@ -71,12 +71,14 @@ class ExcelController extends Controller
             $categoriaSe = $request->categoria;
             $nombres = [
                 "P/ANULAR"=>"PEDIDO PENDIENTE ANULAR",
-                "DRECUP11"=>"PEDIDO RECUPERACIÓN TIPO 11",
+                "DRECUP11"=>"RECUPERACIÓN TIPO 11",
                 "DLINECERRAR"=>"LINEAS A CERRRAR",
                 "P/APROBACION"=>"PEDIDO PENDIENTE DE APROBACIÓN",
                 "S/BPM"=>"PEDIDO SIN BPM",
-                "DRECUP12"=>"PEDIDO RECUPERACIÓN TIPO 12",
-                "DRECOD11"=>"PRODUCTOS CON CÓDIGO RQUIVOCADO A CARGAR NUEVO PEDIDO TIPO 11",
+                "DRECUP12"=>"RECUPERACION TIPO 12",
+                "DRECOD12"=>"CODIGO EQUIVOCADO RECUPERACION TIPO 12",
+                "DRECOD11"=>"CÓDIGO RQUIVOCADO RECUPERACION TIPO 11",
+                "P/CONFIRMACION"=> "PEDIDO PENDIENTE CONFIRMACIÓN"
             ];
             $categoria = DatosExcel::select(['categoria'])->where('gestor',$gestor)->groupBy('categoria')->get();
             $datos = DatosExcel::where('ejercicio', '2023')
