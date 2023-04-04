@@ -69,7 +69,7 @@ class ExcelController extends Controller
         try {
             $gestor = $request->gestor;
             $categoriaSe = $request->categoria;
-            $categoria = DatosExcel::select(['categoria'])->groupBy('categoria')->get();
+            $categoria = DatosExcel::select(['categoria'])->where('gestor',$gestor)->groupBy('categoria')->get();
             $datos = DatosExcel::where('ejercicio', '2023')
                 ->when($request->gestor != null, function ($query) use ($request) {
                     $query->where('gestor', $request->gestor);

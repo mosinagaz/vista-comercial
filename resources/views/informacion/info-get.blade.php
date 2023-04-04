@@ -7,11 +7,11 @@
                 </div>
             </div>
         </div>
-        @if ($message = Session::get('success'))
+        @if (session('success'))
             <div class="alert alert-success alert-top-border alert-dismissible fade show" role="alert">
                 <i class="ri-notification-off-line me-3 align-middle fs-16 text-success"></i><strong>Acción
                     exitosa</strong>
-                - {{ $message }}
+                - {{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
@@ -112,6 +112,8 @@
                                                             aria-label="Close"></button>
                                                 </div>
                                             @endif
+                                                <!-- Base Example -->
+
                                             {{--<div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingThree">
                                                     <button class="accordion-button fw-semibold collapsed" type="button"
