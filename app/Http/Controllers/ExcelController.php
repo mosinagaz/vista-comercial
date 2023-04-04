@@ -69,6 +69,15 @@ class ExcelController extends Controller
         try {
             $gestor = $request->gestor;
             $categoriaSe = $request->categoria;
+            $nombres = [
+                "P/ANULAR"=>"PEDIDO PENDIENTE ANULAR",
+                "DRECUP11"=>"PEDIDO RECUPERACIÓN TIPO 11",
+                "DLINECERRAR"=>"LINEAS A CERRRAR",
+                "P/APROBACION"=>"PEDIDO PENDIENTE DE APROBACIÓN",
+                "S/BPM"=>"PEDIDO SIN BPM",
+                "DRECUP12"=>"PEDIDO RECUPERACIÓN TIPO 12",
+                "DRECOD11"=>"PRODUCTOS CON CÓDIGO RQUIVOCADO A CARGAR NUEVO PEDIDO TIPO 11",
+            ];
             $categoria = DatosExcel::select(['categoria'])->where('gestor',$gestor)->groupBy('categoria')->get();
             $datos = DatosExcel::where('ejercicio', '2023')
                 ->when($request->gestor != null, function ($query) use ($request) {
@@ -88,7 +97,7 @@ class ExcelController extends Controller
                 $result[$item['numero_pedido']][] = $item;
                 return $result;
             }, []);
-            return View('informacion.info-get', compact('lista', 'categoria','categoriaSe', 'gestor'))->with('success', "Filtro aplicado correctamente.");
+            return View('informacion.info-get', compact('lista', 'categoria','categoriaSe', 'gestor','nombres'))->with('success', "Filtro aplicado correctamente.");
         } catch (\Exception $e) {
             return Redirect()->back()->with('error', $e->getMessage());
         }

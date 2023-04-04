@@ -42,7 +42,7 @@
                                                             <option value="">Seleccione una categoria</option>
                                                             @foreach($categoria as $cat)
                                                                 <option
-                                                                    value="{{$cat->categoria}}" {{(isset($lista) && !empty($lista)) ?(reset($lista)[0]['categoria'] == $cat->categoria ?'selected':''):'' }}>{{$cat->categoria}}</option>
+                                                                    value="{{$cat->categoria}}" {{(isset($lista) && !empty($lista)) ?(reset($lista)[0]['categoria'] == $cat->categoria ?'selected':''):'' }}>{{$nombres[$cat->categoria]}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
