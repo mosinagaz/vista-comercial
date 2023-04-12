@@ -19,6 +19,7 @@ class ExcelController extends Controller
     {
         $usuarios = DatosExcel::select(['gestor'])->groupBy('gestor')->get();
         $categoria = DatosExcel::select(['categoria'])->groupBy('categoria')->get();
+        //dd($usuarios->toArray());
         return view('informacion.info', compact('usuarios', 'categoria'));
     }
 
@@ -57,7 +58,7 @@ class ExcelController extends Controller
                 return $result;
             }, []);
 
-            //dd($lista);
+            //dd($usuarios);
             return View('informacion.info', compact('lista', 'usuarios', 'categoria'))->with('success', "Filtro aplicado correctamente.");
         } catch (\Exception $e) {
             return Redirect()->back()->with('error', $e->getMessage());
@@ -77,8 +78,9 @@ class ExcelController extends Controller
                 "S/BPM"=>"PEDIDO SIN BPM",
                 "DRECUP12"=>"RECUPERACION TIPO 12",
                 "DRECOD12"=>"CODIGO EQUIVOCADO RECUPERACION TIPO 12",
-                "DRECOD11"=>"CÓDIGO RQUIVOCADO RECUPERACION TIPO 11",
-                "P/CONFIRMACION"=> "PEDIDO PENDIENTE CONFIRMACIÓN"
+                "DRECOD11"=>"CÓDIGO EUIVOCADO RECUPERACION TIPO 11",
+                "P/CONFIRMACION"=> "PEDIDO PENDIENTE CONFIRMACIÓN",
+
             ];
             $categoria = DatosExcel::select(['categoria'])->where('gestor',$gestor)->groupBy('categoria')->get();
             $datos = DatosExcel::where('ejercicio', '2023')

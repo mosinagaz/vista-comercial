@@ -36,7 +36,7 @@
                                             <div class="row gy-4 mb-2">
                                                 <div class="col-xxl-4 col-md-12 col-sm-12">
                                                     <div>
-                                                        <label for="basiInput" class="form-label">Catrgoría</label>
+                                                        <label for="basiInput" class="form-label">Categoria</label>
                                                         <select name="categoria" type="text"
                                                                 class="form-control form-control-sm">
                                                             <option value="">Seleccione una categoria</option>
