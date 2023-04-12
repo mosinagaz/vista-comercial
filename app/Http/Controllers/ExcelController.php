@@ -78,7 +78,7 @@ class ExcelController extends Controller
                 "S/BPM"=>"PEDIDO SIN BPM",
                 "DRECUP12"=>"RECUPERACION TIPO 12",
                 "DRECOD12"=>"CODIGO EQUIVOCADO RECUPERACION TIPO 12",
-                "DRECOD11"=>"CÓDIGO EUIVOCADO RECUPERACION TIPO 11",
+                "DRECOD11"=>"CÓDIGO EQUIVOCADO RECUPERACION TIPO 11",
                 "P/CONFIRMACION"=> "PEDIDO PENDIENTE CONFIRMACIÓN",
 
             ];
