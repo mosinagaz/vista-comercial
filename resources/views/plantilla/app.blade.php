@@ -1,12 +1,13 @@
 <!doctype html>
-<html lang="es" data-layout="horizontal" data-topbar="dark" data-sidebar-size="lg" data-sidebar="light" data-sidebar-image="none" data-preloader="disable">
+<html lang="es" data-layout="horizontal" data-topbar="dark" data-sidebar-size="lg" data-sidebar="light"
+      data-sidebar-image="none" data-preloader="disable">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Promedical</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Departamento de Ti Promedical" name="description" />
-    <meta content="osinaga.dev" name="author" />
+    <meta content="Departamento de Ti Promedical" name="description"/>
+    <meta content="osinaga.dev" name="author"/>
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
 
@@ -16,13 +17,13 @@
     <!-- Layout config Js -->
     <script src="{{asset('assets/js/layout.js')}}"></script>
     <!-- Bootstrap Css -->
-    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
     <!-- Icons Css -->
-    <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css"/>
     <!-- App Css-->
-    <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css"/>
     <!-- custom Css-->
-    <link href="{{asset('assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/custom.min.css')}}" rel="stylesheet" type="text/css"/>
 
 
 </head>
@@ -34,7 +35,7 @@
 
     <header id="page-topbar">
         <div class="layout-width">
-            <div class="navbar-header" >
+            <div class="navbar-header">
                 <div class="d-flex">
                     <!-- LOGO -->
                     <div class="navbar-brand-box horizontal-logo">
@@ -57,14 +58,17 @@
                         </a>
                     </div>
 
-                    <button type="button" class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger" id="topnav-hamburger-icon">
+                    <button type="button" class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"
+                            id="topnav-hamburger-icon">
                     <span class="hamburger-icon">
                         <span></span>
                         <span></span>
                         <span></span>
                     </span>
                     </button>
-                    <img src="{{asset('assets/images/promedical.png')}}" type="button" class="btn btn-sm ps-5 fs-16 header-item vertical-menu-btn topnav-hamburger" id="topnav-hamburger-icon"/>
+                    <img src="{{asset('assets/images/promedical.png')}}" type="button"
+                         class="btn btn-sm ps-5 fs-16 header-item vertical-menu-btn topnav-hamburger"
+                         id="topnav-hamburger-icon"/>
 
                 </div>
 
@@ -87,7 +91,8 @@
                     </div>--}}
 
                     <div class="ms-1 header-item d-none d-sm-flex">
-                        <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-toggle="fullscreen">
+                        <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
+                                data-toggle="fullscreen">
                             <i class='bx bx-fullscreen fs-22'></i>
                         </button>
                     </div>
@@ -97,9 +102,11 @@
                         </button>
                     </div>--}}
                     <div class="dropdown ms-sm-3 header-item topbar-user">
-                        <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="{{asset('assets/images/users/user-dummy-img.jpg')}}" alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user"
+                                 src="{{asset('assets/images/users/user-dummy-img.jpg')}}" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Usuario</span>
                                 <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">usuario</span>
@@ -110,10 +117,12 @@
                             <!-- item-->
                             <h6 class="dropdown-header">Bienvenido!</h6>
                             @auth
-                            <form action="{{route('logout')}}" method="post">
-                                @csrf
-                                <button type="submit" class="dropdown-item" href="apps-chat.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Cerrar sesion</span></button>
-                            </form>
+                                <form action="{{route('logout')}}" method="post">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item" href="apps-chat.html"><i
+                                            class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
+                                            class="align-middle">Cerrar sesion</span></button>
+                                </form>
                             @endauth
                             {{--<a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
                             <a class="dropdown-item" href="apps-chat.html"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Messages</span></a>
@@ -136,11 +145,14 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="NotificationModalbtn-close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            id="NotificationModalbtn-close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mt-2 text-center">
-                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
+                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                                   colors="primary:#f7b84b,secondary:#f06548"
+                                   style="width:100px;height:100px"></lord-icon>
                         <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
                             <h4>Are you sure ?</h4>
                             <p class="text-muted mx-4 mb-0">Are you sure you want to remove this Notification ?</p>
@@ -148,7 +160,8 @@
                     </div>
                     <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
                         <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete It!</button>
+                        <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete It!
+                        </button>
                     </div>
                 </div>
 
@@ -177,7 +190,8 @@
                         <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="17">
                     </span>
             </a>
-            <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
+            <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
+                    id="vertical-hover">
                 <i class="ri-record-circle-line"></i>
             </button>
         </div>
@@ -190,14 +204,22 @@
                 <ul class="navbar-nav" id="navbar-nav">
                     <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                     @auth
-                    <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{route('cargar')}}"  role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                            <i class="bx bxs-dashboard"></i> <span data-key="t-dashboards">Cargar Datos</span>
-                        </a>
-                    </li> <!-- end Dashboard Menu -->
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{{route('cargar')}}" role="button" aria-expanded="false"
+                               aria-controls="sidebarDashboards">
+                                <i class="bx bxs-dashboard"></i> <span data-key="t-dashboards">Cargar Datos</span>
+                            </a>
+                        </li> <!-- end Dashboard Menu -->
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{{route('cargar')}}" role="button" aria-expanded="false"
+                               aria-controls="sidebarDashboards">
+                                <i class="bx bxs-dashboard"></i> <span data-key="t-dashboards">Gestores</span>
+                            </a>
+                        </li>
                     @endauth
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{route('informacion')}}"  role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <a class="nav-link menu-link" href="{{route('informacion')}}" role="button"
+                           aria-expanded="false" aria-controls="sidebarApps">
                             <i class="bx bx-layer"></i> <span data-key="t-apps">Información</span>
                         </a>
                     </li>
@@ -227,7 +249,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
-                        <script>document.write(new Date().getFullYear())</script> © Promedical.
+                        <script>document.write(new Date().getFullYear())</script>
+                        © Promedical.
                     </div>
                     <div class="col-sm-6">
                         <div class="text-sm-end d-none d-sm-block">
@@ -241,7 +264,6 @@
 
 </div>
 <!-- END layout-wrapper -->
-
 
 
 <!--start back-to-top-->
@@ -260,7 +282,8 @@
 </div>
 
 <div class="customizer-setting d-none d-md-block">
-    <div class="btn-info btn-rounded shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas" data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
+    <div class="btn-info btn-rounded shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas"
+         data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
         <i class='mdi mdi-spin mdi-cog-outline fs-22'></i>
     </div>
 </div>
