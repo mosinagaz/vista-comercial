@@ -108,8 +108,14 @@
                             <img class="rounded-circle header-profile-user"
                                  src="{{asset('assets/images/users/user-dummy-img.jpg')}}" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
+                                @auth
+                                    <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{auth()->user()->email}}</span>
+                                    <span
+                                        class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{{auth()->user()->name}}</span>
+                                @elseauth
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Usuario</span>
                                 <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">usuario</span>
+                                @endauth
                             </span>
                         </span>
                         </button>
@@ -205,15 +211,17 @@
                     <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                     @auth
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="{{route('cargar')}}" role="button" aria-expanded="false"
+                            <a class="nav-link menu-link {{Route::is('cargar')?'active':''}}" href="{{route('cargar')}}"
+                               role="button" aria-expanded="false"
                                aria-controls="sidebarDashboards">
                                 <i class="bx bxs-dashboard"></i> <span data-key="t-dashboards">Cargar Datos</span>
                             </a>
                         </li> <!-- end Dashboard Menu -->
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="{{route('cargar')}}" role="button" aria-expanded="false"
+                            <a class="nav-link menu-link {{Route::is('personal')?'active':''}}"
+                               href="{{route('personal')}}" role="button" aria-expanded="false"
                                aria-controls="sidebarDashboards">
-                                <i class="bx bxs-dashboard"></i> <span data-key="t-dashboards">Gestores</span>
+                                <i class="bx bxs-user"></i> <span data-key="t-dashboards">Personal</span>
                             </a>
                         </li>
                     @endauth
