@@ -80,6 +80,8 @@ class ExcelController extends Controller
                 "DRECOD12"=>"CÓDIGO EQUIVOCADO RECUPERACION TIPO 12",
                 "DRECOD11"=>"CÓDIGO EQUIVOCADO RECUPERACION TIPO 11",
                 "P/CONFIRMACION"=> "PEDIDO PENDIENTE CONFIRMACIÓN",
+                "DCARGT11"=>"LINEAS DE ATENCION PARCIAL, CARGA NUEVO PEDIDO - LARGO VENCIMIENTO",
+                "DCARGT12"=>"LINEAS DE ATENCION PARCIAL, CARGA NUEVO PEDIDO - PROXIMO A VENCER",
 
             ];
             $categoria = DatosExcel::select(['categoria'])->where('gestor',$gestor)->groupBy('categoria')->get();
