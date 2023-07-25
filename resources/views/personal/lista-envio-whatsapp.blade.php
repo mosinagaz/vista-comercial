@@ -62,7 +62,7 @@
                                                     } else {
                                                         $greeting = 'Buen día';
                                                     }
-                                                        $link="https://api.whatsapp.com/send?phone=591".$usuario->celular." &text=".$greeting.", le comparto el link del reporte backorder semana 2 de Julio.%0Ahttps://devpromedical.online/informacion/gestor/".$usuario->gestor;
+                                                        $link="https://api.whatsapp.com/send?phone=591".$usuario->celular." &text=".$greeting.", le comparto el link del reporte backorder semana 3 de Julio.%0Ahttps://devpromedical.online/informacion/gestor/".$usuario->gestor;
                                                 @endphp
                                                 <tr>
                                                     <th scope="row"><a href="#"
